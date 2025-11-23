@@ -4,5 +4,5 @@ namespace GildedRose;
 
 interface QualityCalculatorInterface
 {
-    public function calculateQuality(int $sellInDays, int $currentQuality): int;
+    public function calculateQuality(int $currentQuality, int $sellInDays): int;
 }

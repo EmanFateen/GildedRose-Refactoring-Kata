@@ -19,7 +19,7 @@ final class GildedRose
     {
         foreach ($this->items as $item) {
 
-            $item->quality = $item->qualityCalculator->calculateQuality($item->sellIn, $item->quality);
+            $item->quality = $item->qualityCalculator->calculateQuality($item->quality, $item->sellIn);
 
             if ($item->name !== 'Sulfuras, Hand of Ragnaros') {
                 $item->sellIn--;

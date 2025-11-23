@@ -7,7 +7,7 @@ namespace GildedRose;
 final class QualityCalculator implements QualityCalculatorInterface
 {
 
-    public function calculateQuality(int $sellInDays, int $currentQuality): int
+    public function calculateQuality(int $currentQuality, int $sellInDays): int
     {
         return max(0, $currentQuality - 2);
     }

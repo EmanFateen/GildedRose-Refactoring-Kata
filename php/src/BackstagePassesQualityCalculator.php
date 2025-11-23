@@ -6,7 +6,7 @@ namespace GildedRose;
 
 final class BackstagePassesQualityCalculator implements QualityCalculatorInterface
 {
-    public function calculateQuality(int $sellInDays, int $currentQuality): int
+    public function calculateQuality(int $currentQuality, int $sellInDays): int
     {
         if ($sellInDays <= 1) {
             return 0;
