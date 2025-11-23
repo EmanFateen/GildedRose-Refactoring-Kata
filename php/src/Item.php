@@ -7,14 +7,16 @@ namespace GildedRose;
 class Item implements \Stringable
 {
     public function __construct(
-        public string $name,
-        public int $sellIn,
-        public int $quality
-    ) {
+        public string                     $name,
+        public int                        $sellIn,
+        public int                        $quality,
+        public QualityCalculatorInterface $qualityCalculator
+    )
+    {
     }
 
     public function __toString(): string
     {
-        return (string) "{$this->name}, {$this->sellIn}, {$this->quality}";
+        return "{$this->name}, {$this->sellIn}, {$this->qualityCalculator->calculateQuality($this->sellIn, $this->quality)}";
     }
 }
