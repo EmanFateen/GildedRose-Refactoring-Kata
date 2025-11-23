@@ -18,9 +18,10 @@ final class GildedRose
     public function updateQuality(): void
     {
         foreach ($this->items as $item) {
-            if ($item->name === 'Sulfuras, Hand of Ragnaros')
+            if ($item->name === 'Sulfuras, Hand of Ragnaros') {
+                $item->quality = $item->qualityCalculator->calculateQuality($item->sellIn, $item->quality);
                 continue;
-
+            }
             if ($item->name === 'Aged Brie') {
                 $item->quality = min(50, ++$item->quality);
             } else if ($item->name === 'Backstage passes to a TAFKAL80ETC concert') {
