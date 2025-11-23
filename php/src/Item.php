@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace GildedRose;
 
 use GildedRose\QualityCalculator\QualityCalculatorInterface;
+use GildedRose\SellInCountingDown\SellInCountingDownInterface;
 
 class Item implements \Stringable
 {

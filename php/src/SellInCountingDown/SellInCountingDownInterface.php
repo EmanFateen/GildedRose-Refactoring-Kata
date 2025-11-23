@@ -1,6 +1,6 @@
 <?php
 
-namespace GildedRose;
+namespace GildedRose\SellInCountingDown;
 
 interface SellInCountingDownInterface
 {

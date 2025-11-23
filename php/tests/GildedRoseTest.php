@@ -10,8 +10,8 @@ use GildedRose\QualityCalculator\AgedBrieQualityCalculator;
 use GildedRose\QualityCalculator\BackstagePassesQualityCalculator;
 use GildedRose\QualityCalculator\QualityCalculator;
 use GildedRose\QualityCalculator\UnchangeableQualityCalculator;
-use GildedRose\SellInCountingDown;
-use GildedRose\UnchangeableSellInDays;
+use GildedRose\SellInCountingDown\SellInCountingDown;
+use GildedRose\SellInCountingDown\UnchangeableSellInDays;
 use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase

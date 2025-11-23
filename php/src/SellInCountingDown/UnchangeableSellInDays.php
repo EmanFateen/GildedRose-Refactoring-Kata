@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GildedRose;
+namespace GildedRose\SellInCountingDown;
 
 final class UnchangeableSellInDays implements SellInCountingDownInterface
 {
