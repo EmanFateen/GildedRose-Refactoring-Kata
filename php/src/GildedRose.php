@@ -18,12 +18,8 @@ final class GildedRose
     public function updateQuality(): void
     {
         foreach ($this->items as $item) {
-
             $item->quality = $item->qualityCalculator->calculateQuality($item->quality, $item->sellIn);
-
-            if ($item->name !== 'Sulfuras, Hand of Ragnaros') {
-                $item->sellIn--;
-            }
+            $item->sellIn = $item->sellInCountingDown->updateSellInDays($item->sellIn);
         }
     }
 

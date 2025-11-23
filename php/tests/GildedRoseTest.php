@@ -9,6 +9,7 @@ use GildedRose\BackstagePassesQualityCalculator;
 use GildedRose\GildedRose;
 use GildedRose\Item;
 use GildedRose\QualityCalculator;
+use GildedRose\SellInCountingDown;
 use GildedRose\UnchangeableQualityCalculator;
 use GildedRose\UnchangeableSellInDays;
 use PHPUnit\Framework\TestCase;
@@ -17,7 +18,7 @@ class GildedRoseTest extends TestCase
 {
     public function test_item_should_increase_quality_by_2(): void
     {
-        $items = [new Item('item', 0, 80, new QualityCalculator(), new UnchangeableSellInDays())];
+        $items = [new Item('item', 0, 80, new QualityCalculator(), new SellInCountingDown())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
@@ -27,7 +28,7 @@ class GildedRoseTest extends TestCase
 
     public function test_quality_never_be_negative(): void
     {
-        $items = [new Item('item', 0, 0, new QualityCalculator(), new UnchangeableSellInDays())];
+        $items = [new Item('item', 0, 0, new QualityCalculator(), new SellInCountingDown())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
@@ -37,7 +38,7 @@ class GildedRoseTest extends TestCase
 
     public function test_item_should_sellable(): void
     {
-        $items = [new Item('item', 2, 80, new QualityCalculator(), new UnchangeableSellInDays())];
+        $items = [new Item('item', 2, 80, new QualityCalculator(), new SellInCountingDown())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
@@ -48,7 +49,7 @@ class GildedRoseTest extends TestCase
 
     public function test_aged_brie_quality_is_increasable(): void
     {
-        $items = [new Item('Aged Brie', 60, 20, new AgedBrieQualityCalculator(), new UnchangeableSellInDays())];
+        $items = [new Item('Aged Brie', 60, 20, new AgedBrieQualityCalculator(), new SellInCountingDown())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
@@ -58,7 +59,7 @@ class GildedRoseTest extends TestCase
 
     public function test_max_quality_is_50(): void
     {
-        $items = [new Item('Aged Brie', 0, 50, new AgedBrieQualityCalculator(), new UnchangeableSellInDays())];
+        $items = [new Item('Aged Brie', 0, 50, new AgedBrieQualityCalculator(), new SellInCountingDown())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
@@ -68,7 +69,7 @@ class GildedRoseTest extends TestCase
 
     public function test_aged_brie_is_sellable(): void
     {
-        $items = [new Item('Aged Brie', 60, 20, new AgedBrieQualityCalculator(), new UnchangeableSellInDays())];
+        $items = [new Item('Aged Brie', 60, 20, new AgedBrieQualityCalculator(), new SellInCountingDown())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
@@ -100,7 +101,7 @@ class GildedRoseTest extends TestCase
 
     public function test_backstage_passes_quality_increases_by_2(): void
     {
-        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 10, 20, new BackstagePassesQualityCalculator(), new UnchangeableSellInDays())];
+        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 10, 20, new BackstagePassesQualityCalculator(), new SellInCountingDown())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
@@ -111,7 +112,7 @@ class GildedRoseTest extends TestCase
 
     public function test_backstage_passes_quality_increases_by_3(): void
     {
-        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20, new BackstagePassesQualityCalculator(), new UnchangeableSellInDays())];
+        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20, new BackstagePassesQualityCalculator(), new SellInCountingDown())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
@@ -121,7 +122,7 @@ class GildedRoseTest extends TestCase
 
     public function test_backstage_passes_quality_dropped_to_zero(): void
     {
-        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20, new BackstagePassesQualityCalculator(), new UnchangeableSellInDays())];
+        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20, new BackstagePassesQualityCalculator(), new SellInCountingDown())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
@@ -131,7 +132,7 @@ class GildedRoseTest extends TestCase
 
     public function test_backstage_passes_is_sellable(): void
     {
-        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20, new BackstagePassesQualityCalculator(), new UnchangeableSellInDays())];
+        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20, new BackstagePassesQualityCalculator(), new SellInCountingDown())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
