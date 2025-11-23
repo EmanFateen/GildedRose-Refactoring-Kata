@@ -7,6 +7,7 @@ namespace Tests;
 use GildedRose\AgedBrieQualityCalculator;
 use GildedRose\GildedRose;
 use GildedRose\Item;
+use GildedRose\QualityCalculator;
 use GildedRose\UnchangeableQualityCalculator;
 use PHPUnit\Framework\TestCase;
 
@@ -14,7 +15,7 @@ class GildedRoseTest extends TestCase
 {
     public function test_item_should_increase_quality_by_2(): void
     {
-        $items = [new Item('item', 0, 80, new UnchangeableQualityCalculator())];
+        $items = [new Item('item', 0, 80, new QualityCalculator())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
@@ -24,7 +25,7 @@ class GildedRoseTest extends TestCase
 
     public function test_quality_never_be_negative(): void
     {
-        $items = [new Item('item', 0, 0, new UnchangeableQualityCalculator())];
+        $items = [new Item('item', 0, 0, new QualityCalculator())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
@@ -34,7 +35,7 @@ class GildedRoseTest extends TestCase
 
     public function test_item_should_sellable(): void
     {
-        $items = [new Item('item', 2, 80, new UnchangeableQualityCalculator())];
+        $items = [new Item('item', 2, 80, new QualityCalculator())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();

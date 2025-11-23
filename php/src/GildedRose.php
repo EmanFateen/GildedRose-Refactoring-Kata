@@ -33,7 +33,7 @@ final class GildedRose
                     $item->quality = min(50, $item->quality + 2);
                 }
             } else {
-                $item->quality = max(0, $item->quality - 2);
+                $item->quality = $item->qualityCalculator->calculateQuality($item->sellIn, $item->quality);
             }
 
             $item->sellIn--;
