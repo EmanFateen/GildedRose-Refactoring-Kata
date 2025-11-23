@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests;
 
+use GildedRose\AgedBrieQualityCalculator;
 use GildedRose\GildedRose;
 use GildedRose\Item;
 use GildedRose\UnchangeableQualityCalculator;
@@ -44,7 +45,7 @@ class GildedRoseTest extends TestCase
 
     public function test_aged_brie_quality_is_increasable(): void
     {
-        $items = [new Item('Aged Brie', 60, 20, new UnchangeableQualityCalculator())];
+        $items = [new Item('Aged Brie', 60, 20, new AgedBrieQualityCalculator())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
@@ -54,7 +55,7 @@ class GildedRoseTest extends TestCase
 
     public function test_max_quality_is_50(): void
     {
-        $items = [new Item('Aged Brie', 0, 50, new UnchangeableQualityCalculator())];
+        $items = [new Item('Aged Brie', 0, 50, new AgedBrieQualityCalculator())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
@@ -64,7 +65,7 @@ class GildedRoseTest extends TestCase
 
     public function test_aged_brie_is_sellable(): void
     {
-        $items = [new Item('Aged Brie', 60, 20, new UnchangeableQualityCalculator())];
+        $items = [new Item('Aged Brie', 60, 20, new AgedBrieQualityCalculator())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();

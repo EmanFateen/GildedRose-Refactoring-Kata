@@ -23,7 +23,7 @@ final class GildedRose
                 continue;
             }
             if ($item->name === 'Aged Brie') {
-                $item->quality = min(50, ++$item->quality);
+                $item->quality = $item->qualityCalculator->calculateQuality($item->sellIn, $item->quality);
             } else if ($item->name === 'Backstage passes to a TAFKAL80ETC concert') {
                 if ($item->sellIn <= 1) {
                     $item->quality = 0;
