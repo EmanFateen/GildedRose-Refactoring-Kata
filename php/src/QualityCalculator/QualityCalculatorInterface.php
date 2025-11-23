@@ -1,6 +1,6 @@
 <?php
 
-namespace GildedRose;
+namespace GildedRose\QualityCalculator;
 
 interface QualityCalculatorInterface
 {

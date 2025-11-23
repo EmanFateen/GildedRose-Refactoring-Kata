@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace GildedRose;
 
+use GildedRose\QualityCalculator\QualityCalculatorInterface;
+
 class Item implements \Stringable
 {
     public function __construct(

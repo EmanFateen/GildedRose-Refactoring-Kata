@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use GildedRose\AgedBrieQualityCalculator;
-use GildedRose\BackstagePassesQualityCalculator;
 use GildedRose\GildedRose;
 use GildedRose\Item;
-use GildedRose\QualityCalculator;
+use GildedRose\QualityCalculator\AgedBrieQualityCalculator;
+use GildedRose\QualityCalculator\BackstagePassesQualityCalculator;
+use GildedRose\QualityCalculator\QualityCalculator;
+use GildedRose\QualityCalculator\UnchangeableQualityCalculator;
 use GildedRose\SellInCountingDown;
-use GildedRose\UnchangeableQualityCalculator;
 use GildedRose\UnchangeableSellInDays;
 use PHPUnit\Framework\TestCase;
 
