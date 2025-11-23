@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests;
 
 use GildedRose\AgedBrieQualityCalculator;
+use GildedRose\BackstagePassesQualityCalculator;
 use GildedRose\GildedRose;
 use GildedRose\Item;
 use GildedRose\QualityCalculator;
@@ -98,7 +99,7 @@ class GildedRoseTest extends TestCase
 
     public function test_backstage_passes_quality_increases_by_2(): void
     {
-        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 10, 20, new UnchangeableQualityCalculator())];
+        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 10, 20, new BackstagePassesQualityCalculator())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
@@ -109,7 +110,7 @@ class GildedRoseTest extends TestCase
 
     public function test_backstage_passes_quality_increases_by_3(): void
     {
-        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20, new UnchangeableQualityCalculator())];
+        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20, new BackstagePassesQualityCalculator())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
@@ -119,7 +120,7 @@ class GildedRoseTest extends TestCase
 
     public function test_backstage_passes_quality_dropped_to_zero(): void
     {
-        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20, new UnchangeableQualityCalculator())];
+        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20, new BackstagePassesQualityCalculator())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
@@ -129,7 +130,7 @@ class GildedRoseTest extends TestCase
 
     public function test_backstage_passes_is_sellable(): void
     {
-        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20, new UnchangeableQualityCalculator())];
+        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20, new BackstagePassesQualityCalculator())];
         $sut = new GildedRose($items);
 
         $sut->updateQuality();
