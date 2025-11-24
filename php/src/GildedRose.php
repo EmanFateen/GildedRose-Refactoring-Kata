@@ -18,46 +18,62 @@ final class GildedRose
     public function updateQuality(): void
     {
         foreach ($this->items as $item) {
-            if ($item->name === 'Sulfuras, Hand of Ragnaros')
-                continue;
+            $this->doUpdate($item);
+        }
+    }
 
-            if ($item->name === 'Aged Brie') {
-                $item->quality = min(50, ++$item->quality);
+    private function doUpdate(Item $item): void
+    {
+        if ($item->name === 'Sulfuras, Hand of Ragnaros')
+            return;
 
-                $item->sellIn--;
+        if ($item->name === 'Aged Brie') {
+            $this->updateAgedBrie($item);
+            return;
+        }
 
-                if ($item->sellIn < 0) {
-                    $item->quality = min(50, ++$item->quality);
-                }
+        if ($item->name === 'Backstage passes to a TAFKAL80ETC concert') {
+            $this->updateBackstagePasses($item);
+            return;
+        }
 
-                continue;
-            }
+        $this->updateGeneralItems($item);
+    }
 
-            if ($item->name === 'Backstage passes to a TAFKAL80ETC concert') {
-                $item->quality = min(50, ++$item->quality);
+    private function updateAgedBrie(Item $item): void
+    {
+        $item->sellIn--;
 
-                if ($item->sellIn <= 5) {
-                    $item->quality = min(50, $item->quality + 2);
-                } else if ($item->sellIn <= 10) {
-                    $item->quality = min(50, $item->quality + 1);
-                }
+        $item->quality = $item->sellIn < 0
+            ? min(50, $item->quality + 2)
+            : min(50, $item->quality + 1);
+    }
 
-                $item->sellIn--;
+    private function updateBackstagePasses(Item $item): void
+    {
+        $item->quality = min(50, ++$item->quality);
 
-                if ($item->sellIn < 0) {
-                    $item->quality = 0;
-                }
-                continue;
+        if ($item->sellIn <= 5) {
+            $item->quality = min(50, $item->quality + 2);
+        } else if ($item->sellIn <= 10) {
+            $item->quality = min(50, $item->quality + 1);
+        }
 
-            }
+        $item->sellIn--;
 
+        if ($item->sellIn < 0) {
+            $item->quality = 0;
+        }
+    }
+
+    private function updateGeneralItems(Item $item): void
+    {
+        $item->quality = max(0, $item->quality - 1);
+
+        $item->sellIn--;
+
+        if ($item->sellIn < 0) {
             $item->quality = max(0, $item->quality - 1);
-
-            $item->sellIn--;
-
-            if ($item->sellIn < 0) {
-                $item->quality = max(0, $item->quality - 1);
-            }
         }
     }
 
