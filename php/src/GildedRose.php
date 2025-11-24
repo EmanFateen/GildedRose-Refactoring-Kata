@@ -27,6 +27,8 @@ final class GildedRose
         if ('Sulfuras, Hand of Ragnaros' === $item->name)
             return;
 
+        $item->sellIn--;
+
         if ('Aged Brie' === $item->name) {
             $this->updateAgedBrie($item);
             return;
@@ -42,8 +44,6 @@ final class GildedRose
 
     private function updateAgedBrie(Item $item): void
     {
-        $item->sellIn--;
-
         $item->quality = $item->sellIn < 0
             ? min(50, $item->quality + 2)
             : min(50, $item->quality + 1);
@@ -51,25 +51,21 @@ final class GildedRose
 
     private function updateBackstagePasses(Item $item): void
     {
-        $item->quality = min(50, ++$item->quality);
-
-        if ($item->sellIn <= 5) {
-            $item->quality = min(50, $item->quality + 2);
-        } else if ($item->sellIn <= 10) {
-            $item->quality = min(50, $item->quality + 1);
-        }
-
-        $item->sellIn--;
-
         if ($item->sellIn < 0) {
             $item->quality = 0;
+            return;
+        }
+
+        $item->quality = min(50, ++$item->quality);
+        if ($item->sellIn < 5) {
+            $item->quality = min(50, $item->quality + 2);
+        } else if ($item->sellIn < 10) {
+            $item->quality = min(50, $item->quality + 1);
         }
     }
 
     private function updateGeneralItems(Item $item): void
     {
-        $item->sellIn--;
-
         $item->quality = $item->sellIn < 0
             ? max(0, $item->quality - 2)
             : max(0, $item->quality - 1);
