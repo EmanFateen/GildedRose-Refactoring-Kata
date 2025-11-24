@@ -24,15 +24,15 @@ final class GildedRose
 
     private function doUpdate(Item $item): void
     {
-        if ($item->name === 'Sulfuras, Hand of Ragnaros')
+        if ('Sulfuras, Hand of Ragnaros' === $item->name)
             return;
 
-        if ($item->name === 'Aged Brie') {
+        if ('Aged Brie' === $item->name) {
             $this->updateAgedBrie($item);
             return;
         }
 
-        if ($item->name === 'Backstage passes to a TAFKAL80ETC concert') {
+        if ('Backstage passes to a TAFKAL80ETC concert' === $item->name) {
             $this->updateBackstagePasses($item);
             return;
         }
@@ -75,5 +75,4 @@ final class GildedRose
             : max(0, $item->quality - 1);
 
     }
-
 }
