@@ -10,11 +10,9 @@ use GildedRose\SellInCountingDown\SellInCountingDownInterface;
 class Item implements \Stringable
 {
     public function __construct(
-        public string                      $name,
-        public int                         $sellIn,
-        public int                         $quality,
-        public QualityCalculatorInterface  $qualityCalculator,
-        public SellInCountingDownInterface $sellInCountingDown
+        public string $name,
+        public int    $sellIn,
+        public int    $quality
     )
     {
     }
