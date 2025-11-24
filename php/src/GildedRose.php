@@ -68,13 +68,12 @@ final class GildedRose
 
     private function updateGeneralItems(Item $item): void
     {
-        $item->quality = max(0, $item->quality - 1);
-
         $item->sellIn--;
 
-        if ($item->sellIn < 0) {
-            $item->quality = max(0, $item->quality - 1);
-        }
+        $item->quality = $item->sellIn < 0
+            ? max(0, $item->quality - 2)
+            : max(0, $item->quality - 1);
+
     }
 
 }
