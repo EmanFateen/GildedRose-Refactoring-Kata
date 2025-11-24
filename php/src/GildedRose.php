@@ -41,7 +41,10 @@ final class GildedRose
 
             }
 
-            $item->quality = max(0, $item->quality - 2);
+            $item->quality = max(0, $item->quality - 1);
+            if ($item->sellIn <= 1) {
+                $item->quality = max(0, $item->quality - 1);
+            }
             $item->sellIn--;
         }
     }
