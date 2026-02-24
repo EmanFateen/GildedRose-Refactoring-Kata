@@ -4,17 +4,21 @@ declare(strict_types=1);
 
 namespace GildedRose;
 
+use GildedRose\QualityCalculator\QualityCalculatorInterface;
+use GildedRose\SellInCountingDown\SellInCountingDownInterface;
+
 class Item implements \Stringable
 {
     public function __construct(
         public string $name,
-        public int $sellIn,
-        public int $quality
-    ) {
+        public int    $sellIn,
+        public int    $quality
+    )
+    {
     }
 
     public function __toString(): string
     {
-        return (string) "{$this->name}, {$this->sellIn}, {$this->quality}";
+        return "{$this->name}, {$this->sellIn}, {$this->quality}";
     }
 }
